@@ -1,0 +1,4 @@
+credentials/
+__pycache__/
+src/utils/example_response.py
+*.ipynb
