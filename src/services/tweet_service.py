@@ -1,7 +1,7 @@
 from ast import keyword
 from src.models.hello import Hello
 from fastapi import HTTPException
-from src.twitter_handler import user_tweets, analytics
+from src.twitter_handler import user_tweets, analytics, user_id
 
 def tweet_service():
     return Hello(message='hello!')
@@ -23,4 +23,5 @@ def user_keywords_analytics_service(id, max_results=10):
     # Get data keywords list
     keywords_list = analytics.keyword_analytics(data)
     return keywords_list
+
 

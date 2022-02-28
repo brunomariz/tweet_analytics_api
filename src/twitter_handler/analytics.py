@@ -32,14 +32,17 @@ def keyword_analytics(data: List):
         keywords_df = keywords_df.append(dict(keywords), ignore_index=True)
 
     # Get sum and count for every keyword
-    keywords_count = pd.Series(keywords_df.count(), name='count').sort_values()
-    keywords_sum = pd.Series(keywords_df.sum(), name='sum').sort_values()
+    keywords_count = pd.Series(keywords_df.count(), name='count')
+    keywords_sum = pd.Series(keywords_df.sum(), name='sum')
     # Divide the sum of the kewyword values by the number of times it appears (the smaller the value, the more important it is)
-    keywords_sum_count = pd.Series(keywords_df.sum() / (keywords_df.count()+1), name='sumOverCount').sort_values()
+    keywords_sum_count = pd.Series(keywords_df.sum() / (keywords_df.count()+1), name='sumOverCount')
 
     # Combine info into single dataframe
     # keywords_combined = pd.concat([keywords_sum, keywords_count, keywords_sum_count], axis=1)
     
+    # Sort series
+    keywords_count = keywords_count.sort_values(ascending=False)
+
     # return keywords_combined.to_dict()
     return {'count':{'index': keywords_count.index.tolist(),'values':keywords_count.tolist()},
             'sum':{'index': keywords_sum.index.tolist(),'values':keywords_sum.tolist()},
