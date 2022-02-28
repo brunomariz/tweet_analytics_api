@@ -43,5 +43,5 @@ def keyword_analytics(data: List):
     # return keywords_combined.to_dict()
     return {'count':{'index': keywords_count.index.tolist(),'values':keywords_count.tolist()},
             'sum':{'index': keywords_sum.index.tolist(),'values':keywords_sum.tolist()},
-            'sum/count': {'index': keywords_sum_count.index.tolist(),'values':keywords_sum_count.tolist()}
+            'sumOverCount': {'index': keywords_sum_count.index.tolist(),'values':keywords_sum_count.tolist()}
             }
