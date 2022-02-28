@@ -15,7 +15,7 @@ def word_frequency(data: List):
                 frequencies[word] += 1
     return frequencies
 
-def get_keywords(data: List):
+def keyword_analytics(data: List):
     # Initialize keyword list
     keywords_df = pd.DataFrame()
     for text in data:
@@ -31,7 +31,13 @@ def get_keywords(data: List):
         # Append extracted keywords to df
         keywords_df = keywords_df.append(dict(keywords), ignore_index=True)
 
+    # Get sum and count for every keyword
+    keywords_count = pd.Series(keywords_df.count(), name='count')
+    keywords_sum = pd.Series(keywords_df.sum(), name='sum')
     # Divide the sum of the kewyword values by the number of times it appears (the smaller the value, the more important it is)
-    keywords_sum = (keywords_df.sum() / (keywords_df.count()+1)).to_dict()
+    keywords_sum_count = pd.Series(keywords_df.sum() / (keywords_df.count()+1), name='sum/count')
 
-    return keywords_sum
+    # Combine info into single dataframe
+    keywords_combined = pd.concat([keywords_sum, keywords_count, keywords_sum_count], axis=1)
+
+    return keywords_combined.to_dict()
