@@ -34,8 +34,10 @@ def keyword_analytics(data: List):
 
     # Remove portuguese stopwords
     nltk.download('stopwords')
-    pt_stopwords = nltk.corpus.stopwords.words('portuguese') + ['pra']
-    drop_columns = [value for value in pt_stopwords if value in keywords_df.columns]
+    stopwords = nltk.corpus.stopwords.words('portuguese') + nltk.corpus.stopwords.words('english') + \
+                ['pra', 'pro', 'nao', 'Nao', 'n', 'nn', 'mto', 'mt']
+    # drop_columns = [value for value in stopwords if value in keywords_df.columns]
+    drop_columns = [value for value in stopwords if value in keywords_df.columns]
     keywords_df.drop(drop_columns, axis=1, inplace=True)
 
     # Get sum and count for every keyword
