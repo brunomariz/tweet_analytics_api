@@ -2,6 +2,7 @@ from collections import Counter
 import yake
 from typing import List
 import pandas as pd
+import nltk
 
 
 def word_frequency(data: List):
@@ -30,6 +31,12 @@ def keyword_analytics(data: List):
         keywords = custom_kw_extractor.extract_keywords(text)
         # Append extracted keywords to df
         keywords_df = keywords_df.append(dict(keywords), ignore_index=True)
+
+    # Remove portuguese stopwords
+    nltk.download('stopwords')
+    pt_stopwords = nltk.corpus.stopwords.words('portuguese') + ['pra']
+    drop_columns = [value for value in pt_stopwords if value in keywords_df.columns]
+    keywords_df.drop(drop_columns, axis=1, inplace=True)
 
     # Get sum and count for every keyword
     keywords_count = pd.Series(keywords_df.count(), name='count')
