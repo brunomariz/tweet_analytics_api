@@ -1,4 +1,6 @@
 credentials/
 __pycache__/
 src/utils/example_response.py
+src/shell/set_credentials.sh
 *.ipynb
+.env

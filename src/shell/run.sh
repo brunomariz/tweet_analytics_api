@@ -4,4 +4,5 @@ TRIANGLE='\xE2\x96\xB8'
 
 echo "\n [${CYAN}👾 Running app on port ${1:-5000} ...${NC}]\n"
 
+sh set_credentials.sh
 uvicorn src.main:app --reload --port ${1:-5000}

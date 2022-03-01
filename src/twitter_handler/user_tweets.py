@@ -1,7 +1,9 @@
 from typing import List
 import requests
-from credentials.api import BEARER_TOKEN
 import re
+import os
+
+BEARER_TOKEN = os.environ['BEARER_TOKEN']
 
 def get_user_tweets(id, max_results=10):
     headers = {'Authorization': 'Bearer ' + BEARER_TOKEN}

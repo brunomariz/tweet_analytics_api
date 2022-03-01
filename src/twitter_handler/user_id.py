@@ -1,6 +1,8 @@
 import requests
 from fastapi import HTTPException
-from credentials.api import BEARER_TOKEN
+import os
+
+BEARER_TOKEN = os.environ['BEARER_TOKEN']
 
 def get_user_data_by_username(username):
     headers = {'Authorization': 'Bearer ' + BEARER_TOKEN}
