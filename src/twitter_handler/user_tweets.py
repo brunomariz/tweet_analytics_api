@@ -16,7 +16,7 @@ def get_parsed_user_tweets(id, max_results=10):
     # Parse data
     data = [item['text'] for item in tweets['data']]
     # Remove hashtags, @ mentions and links from tweets text
-    data = [' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)"," ",x).split()) for x in data]
+    data = [' '.join(re.sub("(@[A-Za-z0-9_]+)|([^0-9A-Za-z \t])|(\w+:\/\/\S+)"," ",x).split()) for x in data]
 
     return data
 
