@@ -23,8 +23,8 @@ async def user_word_frequency(id: int):
 
 @router.get("/keywords/{id}")
 async def user_keywords_list(id: int):
-    # return tweet_service.user_keywords_analytics_service(id, max_results=50)
-    from src.utils.example_response import example_keywords
-    return example_keywords
+    return tweet_service.user_keywords_analytics_service(id, max_results=100)
+    # from src.utils.example_response import example_keywords
+    # return example_keywords
 
 
