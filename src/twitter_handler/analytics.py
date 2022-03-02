@@ -35,7 +35,7 @@ def keyword_analytics(data: List):
     # Remove portuguese stopwords
     nltk.download('stopwords')
     stopwords = nltk.corpus.stopwords.words('portuguese') + nltk.corpus.stopwords.words('english') + \
-                ['pra', 'pro', 'nao', 'Nao', 'n', 'nn', 'mto', 'mt']
+                ['pra', 'pro', 'nao', 'Nao', 'n', 'nn', 'mto', 'mt', 'tbm','vdd']
     # drop_columns = [value for value in stopwords if value in keywords_df.columns]
     drop_columns = [value for value in stopwords if value in keywords_df.columns]
     keywords_df.drop(drop_columns, axis=1, inplace=True)
